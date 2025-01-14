@@ -1,5 +1,9 @@
+package dici.models.dao;
 import java.sql.*;
 import java.util.List;
+
+import dici.models.dto.Donnees_demo;
+
 import java.util.ArrayList;
 
 public class Donnees_demoDAO {

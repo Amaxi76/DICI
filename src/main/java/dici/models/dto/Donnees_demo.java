@@ -1,3 +1,5 @@
+package dici.models.dto;
+
 public class Donnees_demo {
 	private int id;
 	private int age;

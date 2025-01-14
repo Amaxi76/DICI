@@ -1,3 +1,4 @@
+package dici.models.dto;
 // Classe représentant un enregistrement de la table "immobilier"
 public class Immobilier {
     private int id;

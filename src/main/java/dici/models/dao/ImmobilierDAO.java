@@ -1,5 +1,9 @@
+package dici.models.dao;
 import java.sql.*;
 import java.util.List;
+
+import dici.models.dto.Immobilier;
+
 import java.util.ArrayList;
 
 // Classe DAO pour interagir avec la table "immobilier"
