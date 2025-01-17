@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane prefHeight="421.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.dici.controller.MainController" stylesheets="@styles/style.css">
+   <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints vgrow="ALWAYS" />
+   </rowConstraints>
+   <children>
+      <GridPane>
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints vgrow="SOMETIMES" minHeight="50.0" />
+            <RowConstraints vgrow="ALWAYS" minHeight="100.0" />
+         </rowConstraints>
+         <children>
+            <!-- Form Section -->
+            <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL">
+               <children>
+                  <Label text="Choisir une ville à ajouter à la liste" />
+                  <TextField fx:id="txtCity" prefWidth="300.0" />
+                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addVille" text="Ajouter">
+                     <FlowPane.margin>
+                        <Insets top="10" />
+                     </FlowPane.margin>
+                  </Button>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/caddie.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </FlowPane>
+
+            <!-- City List Section -->
+            <GridPane style="-fx-border-radius: 2; -fx-border-width: 2; -fx-border-color: grey;" GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="ALWAYS" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="40.0" />
+                  <RowConstraints vgrow="ALWAYS" />
+               </rowConstraints>
+               <children>
+                  <FlowPane style="-fx-background-color: grey;">
+                     <children>
+                        <Label text="Votre liste" textFill="WHITE" style="-fx-font-size: 20;">
+                           <padding>
+                              <Insets left="10" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </FlowPane>
+                  <FlowPane fx:id="listCity" hgap="10.0" vgap="10.0" padding="10" style="-fx-background-color: #cccccc;" GridPane.rowIndex="1">
+                     <children>
+                        <Button mnemonicParsing="false" text="Le Havre" />
+                        <Button mnemonicParsing="false" text="Rouen" />
+                        <Button mnemonicParsing="false" text="Caen" />
+                        <Button mnemonicParsing="false" text="Mondreville" />
+                        <Button mnemonicParsing="false" text="Paris" />
+                     </children>
+                  </FlowPane>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</GridPane>

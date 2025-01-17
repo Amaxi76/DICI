@@ -1,0 +1,8 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+
+    "java.project.sourcePaths": [
+        "src",
+        "src\\main\\resources"
+    ],
+}
