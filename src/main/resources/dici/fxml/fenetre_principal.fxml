@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="470.0" maxWidth="800.0" prefHeight="470.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dici.controller.MainController">
+  <!-- Définition des colonnes -->
+  <columnConstraints>
+    <ColumnConstraints hgrow="ALWAYS" />
+  </columnConstraints>
+
+  <!-- Définition des lignes -->
+  <rowConstraints>
+    <RowConstraints vgrow="ALWAYS" /> <!-- Ligne flexible pour contenuDynamique -->
+    <RowConstraints prefHeight="50.0" vgrow="NEVER" /> <!-- Ligne fixe pour FlowPane -->
+  </rowConstraints>
+
+  <!-- Contenu dynamique (zone principale) -->
+  <children>
+    <Pane fx:id="contenuDynamique" prefHeight="414.0" prefWidth="800.0" GridPane.rowIndex="0" />
+
+    <!-- FlowPane (boutons en bas) -->
+    <FlowPane alignment="CENTER" hgap="50.0" prefHeight="50.0" style="-fx-background-color: grey;" GridPane.rowIndex="1">
+      <children>
+        <Button mnemonicParsing="false" onAction="#afficherVueVille" prefWidth="250.0" text="Choisir les villes manuellement" />
+        <Button mnemonicParsing="false" onAction="#afficherVueNbHabitant" prefWidth="250.0" text="Choisir en fonction du nombre d'habitants" />
+      </children>
+    </FlowPane>
+  </children>
+</GridPane>

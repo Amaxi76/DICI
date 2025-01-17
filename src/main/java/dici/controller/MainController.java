@@ -20,8 +20,8 @@ public class MainController
 	@FXML
 	private FlowPane listCity;
 
-	public void afficherVueVille     () { chargerVue("/com/example/fxml/fenetre_ville.fxml"   );}
-	public void afficherVueNbHabitant() { chargerVue("/com/example/fxml/fenetre_habitant.fxml");}
+	public void afficherVueVille     () { chargerVue("/dici/fxml/fenetre_ville.fxml"   );}
+	public void afficherVueNbHabitant() { chargerVue("/dici/fxml/fenetre_habitant.fxml");}
 
 	public void chargerVue(String fxml)
 	{
@@ -46,4 +46,11 @@ public class MainController
 		Button btnNewVille = new Button(txtCity.getText());
 		listCity.getChildren().add(btnNewVille);
 	}
+
+	public void syncValueSliderTextField()
+	{
+
+	}
+
+	
 }

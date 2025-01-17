@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="470.0" maxWidth="800.0" prefHeight="470.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.dici.controller.MainController">
+<GridPane maxHeight="470.0" maxWidth="800.0" prefHeight="470.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dici.controller.MainController">
   <!-- Définition des colonnes -->
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" />

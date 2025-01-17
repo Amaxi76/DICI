@@ -31,7 +31,12 @@
 					<mainClass>dici.controller.MainApp</mainClass>
 				</configuration>
 			</plugin>
-		</plugins>  
+		</plugins> 
+		<resources>
+		<resource>
+			<directory>src/main/resources</directory>
+		</resource>
+  </resources> 
 	</build>
 
 	<dependencies>
