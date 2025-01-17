@@ -23,5 +23,11 @@
 hs_err_pid*
 replay_pid*
 
+# Mac OS files
 .DS_Store
+
+# Data files
 src/resources/data/dataRealEstate.csv
+
+# Compiled class file
+target/
