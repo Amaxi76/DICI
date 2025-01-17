@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.io.InputStream;
 
 public class DataRealEstateToDatabase {
 	private final int INDEX_REAL_SURFACE_BATI  = 31;
@@ -34,7 +33,7 @@ public class DataRealEstateToDatabase {
 
 	private void loadProperties() {
 		Properties properties = new Properties();
-		try (FileInputStream inputStream = new FileInputStream("../../../../resources/application.properties")) {
+		try (FileInputStream inputStream = new FileInputStream("src/resources/application.properties")) {
 			properties.load(inputStream);
 			this.csvFilePath = properties.getProperty("csv.file.path");
 			this.dbUrl = properties.getProperty("db.url");
