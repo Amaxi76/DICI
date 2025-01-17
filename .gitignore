@@ -27,7 +27,7 @@ replay_pid*
 .DS_Store
 
 # Data files
-src/resources/data/dataRealEstate.csv
+src/resources/data/
 
 # Compiled class file
 target/
