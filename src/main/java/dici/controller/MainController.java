@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,8 +43,6 @@ public class MainController {
 	@FXML
 	public void initialize() {
 		listCity = FXCollections.observableArrayList();
-
-	
 	}
 
 
@@ -97,6 +96,7 @@ public class MainController {
 	public void updateTable() 
 	{
 		cityNameColumn  .setCellValueFactory(cellData -> new SimpleStringProperty  (cellData.getValue().getNameCity ()));
+		cityNameColumn.getStyleClass().add("large-cell-text");
 		cityActionColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDeleteBtn()));
 
 		tableCity.setItems(listCity);

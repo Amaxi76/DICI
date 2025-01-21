@@ -6,13 +6,14 @@ public class City
 {
 	private String nameCity;
 	private Button deleteBtn;
-
+	
 	public City(String cityName)
 	{
-		this.nameCity  = cityName;
+		this.nameCity = cityName;
 		this.deleteBtn = new Button("X");
-        this.deleteBtn.setOnAction(null);
+		this.deleteBtn.getStyleClass().add("delete-button");
 	}
+	
 
     public String getNameCity () { return nameCity;  }
     public Button getDeleteBtn() { return deleteBtn; }

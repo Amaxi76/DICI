@@ -118,3 +118,83 @@
     -fx-background-radius: 0;
 }
 
+.large-cell-text {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Optionnel, pour un texte en gras */
+}
+
+/* Style pour le TableView */
+.tableCity {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc; 
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0);
+}
+
+/* Style pour l'en-tête des colonnes */
+.tableCity .column-header-background {
+    -fx-background-color: #f0f0f0;
+}
+
+.tableCity .column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+}
+
+/* Style pour les cellules */
+.tableCity .table-cell {
+    -fx-alignment: center-left;
+    -fx-font-size: 14px;
+}
+
+/* Style pour les lignes alternées */
+.tableCity .table-row-cell:odd {
+    -fx-background-color: #f5f5f5;
+}
+
+.tableCity .table-row-cell:even {
+    -fx-background-color: white;
+}
+
+/* Style au survol des lignes */
+.tableCity .table-row-cell:hover {
+    -fx-background-color: #e8e8e8;
+}
+
+/* Style pour la ligne sélectionnée */
+.tableCity .table-row-cell:selected {
+    -fx-background-color: #0078d7;
+    -fx-text-fill: white;
+}
+
+/* Style pour la colonne d'action */
+.tableCity .table-column#cityActionColumn {
+    -fx-pref-width: 80px;
+    -fx-max-width: 100px;
+    -fx-alignment: center;
+}
+
+/* Style pour la colonne des noms de villes */
+.tableCity .table-column#cityNameColumn {
+    -fx-alignment: center-left;
+}
+
+/* Style pour le bouton de suppression */
+.tableCity .delete-button {
+    -fx-background-color: #575757;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-width: 10px;
+    -fx-height: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.tableCity .delete-button:hover {
+    -fx-background-color: #404040;
+}
+
