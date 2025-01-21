@@ -51,7 +51,6 @@
     -fx-background-color: #0078d7; /* Couleur de fond bleue */
     -fx-text-fill: white; /* Texte blanc */
     -fx-font-size: 14px;
-    -fx-padding: 8 15 8 15; /* Marges internes */
     -fx-border-radius: 5; /* Coins arrondis */
     -fx-background-radius: 5;
     -fx-cursor: hand; /* Curseur en forme de main au survol */
@@ -87,14 +86,6 @@
     -fx-background-color: #1e7e34; /* Vert encore plus foncé quand pressé */
 }
 
-.city-button {
-    -fx-background-color: #575757;
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-padding: 8 15 8 15;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
-}
 
 .toggleButton {
     -fx-background-color: #4169E1; /* Royal Blue */
@@ -153,7 +144,7 @@
 
 /* Style pour les lignes alternées */
 .tableCity .table-row-cell:odd {
-    -fx-background-color: #f5f5f5;
+    -fx-background-color: #cfcfcf;
 }
 
 .tableCity .table-row-cell:even {
@@ -162,7 +153,7 @@
 
 /* Style au survol des lignes */
 .tableCity .table-row-cell:hover {
-    -fx-background-color: #e8e8e8;
+    -fx-background-color: #e20707;
 }
 
 /* Style pour la ligne sélectionnée */

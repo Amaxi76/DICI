@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" fillWidth="false" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dici.controller.MainController">
+<VBox alignment="CENTER" fillWidth="false" prefHeight="203.0" prefWidth="321.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dici.controller.MainController">
    <children>
+      <FlowPane alignment="CENTER" hgap="10.0">
+         <children>
+               <RadioButton fx:id="radioPlus10" mnemonicParsing="false" text="+10" />
+               <RadioButton fx:id="radioPlus100" mnemonicParsing="false" text="+100" />
+               <RadioButton fx:id="radioPlus1000" mnemonicParsing="false" text="+1000" />
+         </children>
+      </FlowPane>
       <!-- Label pour le titre -->
       <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Nombre d'habitants" VBox.vgrow="ALWAYS" />
 
       <!-- Champ de texte -->
-      <TextField VBox.vgrow="ALWAYS" />
+      <TextField onInputMethodTextChanged="#syncValueSliderTextField" prefHeight="33.0" prefWidth="58.0" VBox.vgrow="ALWAYS" />
 
       <!-- Label pour l'arrondi -->
       <Label style="-fx-font-size: 14px;" text="Arrondi" />
 
       <!-- Slider avec ajustements -->
-      <Slider fx:id="sliderArrondi" blockIncrement="1.0" majorTickUnit="10.0" onDragDetected="#syncValueSliderTextField" VBox.vgrow="ALWAYS" />
-      <TextField onAction="#syncValueSliderTextField" prefHeight="33.0" prefWidth="39.0" />
+      <Slider fx:id="sliderArrondi" blockIncrement="100.0" majorTickUnit="10.0" max="1000.0" onDragDetected="#syncValueSliderTextField" VBox.vgrow="ALWAYS" />
+      <TextField fx:id="txtArrondi" onAction="#syncValueSliderTextField" prefHeight="34.0" prefWidth="98.0" />
    </children>
 </VBox>

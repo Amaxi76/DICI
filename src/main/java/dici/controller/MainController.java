@@ -1,5 +1,6 @@
 package dici.controller;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -7,10 +8,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -22,23 +26,35 @@ import dici.classes.City;
 public class MainController {
 
 	@FXML
-	private Pane contenuDynamique; // Pane dynamique pour charger les vues
+	private Pane                      contenuDynamique; // Pane dynamique pour charger les vues
+	@FXML
+	private Button                    btnAdd; // Bouton pour ajouter une ville
+	@FXML
+	private TextField                 txtCity; // Champ de texte pour saisir une ville
+	@FXML
+	private TextField                 txtArrondi; // Champ de texte pour saisir une ville	
+	@FXML
+	private Slider                    sliderArrondi; 
 
 	@FXML
-	private Button btnAdd; // Bouton pour ajouter une ville
+    private RadioButton radioPlus10;
+
+    @FXML
+    private RadioButton radioPlus100;
+
+    @FXML
+    private RadioButton radioPlus1000;
+
+    private ToggleGroup toggleGroup;
 
 	@FXML
-	private TextField txtCity; // Champ de texte pour saisir une ville
-
-	@FXML
-	private TableView<City> tableCity; // TableView pour afficher les villes
-
-	private ObservableList<City> listCity; // Liste des villes
-
+	private TableView<City>           tableCity; // TableView pour afficher les villes
 	@FXML
 	private TableColumn<City, String> cityNameColumn;
 	@FXML
 	private TableColumn<City, Button> cityActionColumn;
+
+	private ObservableList<City>      listCity; // Liste des villes
 
 	@FXML
 	public void initialize() {
@@ -47,17 +63,23 @@ public class MainController {
 
 
 	// Afficher la vue pour gérer les villes
-	public void afficherVueVille() {
-		chargerVue("/dici/fxml/fenetre_ville.fxml");
+	public void afficherVueVille     () 
+	{ 
+		loadView("/dici/fxml/fenetre_ville.fxml"   );
+		tableCity.setItems(listCity);
 	}
 
 	// Afficher la vue pour gérer le nombre d'habitants
-	public void afficherVueNbHabitant() {
-		chargerVue("/dici/fxml/fenetre_habitant.fxml");
+	public void afficherVueNbHabitant() 
+	{ 
+		loadView("/dici/fxml/fenetre_habitant.fxml");
+
+		this.setupListeners();
+		this.setToogleGroup();
 	}
 
 	// Charger une vue FXML dans le panneau dynamique
-	public void chargerVue(String fxml) {
+	public void loadView(String fxml) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 			Pane nouvelleVue = loader.load();
@@ -73,6 +95,53 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
+
+	public void setupListeners() {
+        if (sliderArrondi != null) {
+            sliderArrondi.valueProperty().addListener((observable, oldValue, newValue) -> {
+                syncValueSliderTextField();
+            });
+        }
+    }
+
+	public void setToogleGroup()
+	{
+		// Créer un groupe pour les boutons radio
+        toggleGroup = new ToggleGroup();
+        radioPlus10  .setToggleGroup(toggleGroup);
+        radioPlus100 .setToggleGroup(toggleGroup);
+        radioPlus1000.setToggleGroup(toggleGroup);
+
+        // Ajouter un écouteur au groupe
+        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                RadioButton selectedRadio = (RadioButton) newValue;
+                handleRadioButtonClick(selectedRadio.getText());
+            }
+        });
+	}
+
+	  // Méthode pour gérer les clics
+	private void handleRadioButtonClick(String text) {
+        // Ajoutez ici votre logique pour chaque bouton
+		double increment = 1;
+        switch (text) {
+            case "+10":
+				increment = 10;
+                break;
+            case "+100":
+                increment = 100;
+                break;
+            case "+1000":
+				increment = 1000;
+                break;
+            default:
+                increment = 10;
+                break;
+        }
+
+		sliderArrondi.setBlockIncrement(increment);
+    }
 
 	public void addVille() {
 		String city = txtCity.getText();
@@ -104,8 +173,30 @@ public class MainController {
 
 	// Synchroniser les valeurs d'un curseur et d'un champ de texte (fonctionalité à implémenter si nécessaire)
 	public void syncValueSliderTextField() {
-		// Fonctionnalité non implémentée
+		if (isInteger(txtArrondi.getText())) 
+			sliderArrondi.setValue(Integer.parseInt(txtArrondi.getText()));
+		
+	
+		// Récupérer la valeur du slider et arrondir au centième
+		double roundedValue = Math.round(sliderArrondi.getValue() * 100.0) / 100.0;
+		
+		// Afficher la valeur arrondie dans le champ texte
+		txtArrondi.setText(Double.toString(roundedValue));
 	}
+	
+
+	public static boolean isInteger(String text) {
+		if (text == null || text.isEmpty()) {
+			return false;
+		}
+		try {
+			Integer.parseInt(text);
+			return true; // La conversion a réussi, donc c'est un entier.
+		} catch (NumberFormatException e) {
+			return false; // La conversion a échoué, donc ce n'est pas un entier.
+		}
+	}
+	
 }
 
 
