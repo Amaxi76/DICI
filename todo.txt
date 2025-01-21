@@ -1,4 +1,0 @@
-sauvegarde de la liste de ville quand on change de formulaire
-Page de chargement
-radio button pour l'arrondi
-vu avec graphique

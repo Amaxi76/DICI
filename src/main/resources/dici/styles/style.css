@@ -142,50 +142,48 @@
     -fx-font-size: 14px;
 }
 
-/* Style pour les lignes alternées */
 .tableCity .table-row-cell:odd {
-    -fx-background-color: #cfcfcf;
+    -fx-background-color: #d3e6f5;
 }
 
 .tableCity .table-row-cell:even {
     -fx-background-color: white;
 }
 
-/* Style au survol des lignes */
+
 .tableCity .table-row-cell:hover {
     -fx-background-color: #e20707;
 }
 
-/* Style pour la ligne sélectionnée */
 .tableCity .table-row-cell:selected {
     -fx-background-color: #0078d7;
     -fx-text-fill: white;
 }
 
-/* Style pour la colonne d'action */
 .tableCity .table-column#cityActionColumn {
     -fx-pref-width: 80px;
     -fx-max-width: 100px;
     -fx-alignment: center;
 }
 
-/* Style pour la colonne des noms de villes */
 .tableCity .table-column#cityNameColumn {
     -fx-alignment: center-left;
 }
 
-/* Style pour le bouton de suppression */
 .tableCity .delete-button {
-    -fx-background-color: #575757;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-width: 10px;
-    -fx-height: 10px;
+    -fx-background-color: white;
+    -fx-text-fill: red; 
+    -fx-border-color: red;
+    -fx-border-width: 1px;
     -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 7;
+    -fx-cursor: hand; 
+    -fx-font-size: 20px;
 }
 
 .tableCity .delete-button:hover {
-    -fx-background-color: #404040;
+    -fx-background-color: #ffe6e6; 
+    -fx-text-fill: darkred;
+    -fx-border-color: darkred; 
 }
-

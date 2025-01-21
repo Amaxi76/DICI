@@ -10,7 +10,7 @@ public class City
 	public City(String cityName)
 	{
 		this.nameCity = cityName;
-		this.deleteBtn = new Button("X");
+		this.deleteBtn = new Button("🗑");
 		this.deleteBtn.getStyleClass().add("delete-button");
 	}
 	
