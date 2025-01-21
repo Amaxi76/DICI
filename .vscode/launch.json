@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DataDemographyToDatabase",
+            "request": "launch",
+            "mainClass": "dici.script.DataDemographyToDatabase",
+            "projectName": "dici"
+        },
+        {
+            "type": "java",
             "name": "Launch JavaFX Application",
             "request": "launch",
             "mainClass": "dici.controller.MainApp",

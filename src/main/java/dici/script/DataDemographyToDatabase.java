@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.io.InputStream;
 
 public class DataDemographyToDatabase {
 
@@ -44,7 +45,6 @@ public class DataDemographyToDatabase {
 
 			String[] headers = br.readLine().split(",");
 			int codeVilleIndex = findIndex(headers, "CODGEO");
-			int nomVilleIndex = findIndex(headers, "LIBGEO");
 
 			String insertQuery = "INSERT INTO " + dbName + " (code_ville, nom_ville, prix_m2, age, niveau_diplome, densite_pop, pop_active, taux_chomage) " +
 					"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -54,16 +54,21 @@ public class DataDemographyToDatabase {
 				while ((line = br.readLine()) != null) {
 					String[] data = line.split(",");
 
-					int codeVille = Integer.parseInt(data[codeVilleIndex]);
-					String nomVille = data[nomVilleIndex];
-					float prixM2 = calculatePrixM2(data, headers);
+
+					String codeVille = String.format ( "%05d", Integer.parseInt ( data[codeVilleIndex] ) );
+					String nomVille = APIToolbox.getCityName(data[codeVilleIndex]);
+					System.out.println("Processing city: " + nomVille + " (Code: " + codeVille + ")");
+					float prixM2 = APIToolbox.getPriceM2(data[codeVilleIndex]);
 					int age = calculateAge(data, headers);
 					int niveauDiplome = calculateNiveauDiplome(data, headers);
 					int densitePop = calculateDensitePop(data, headers);
 					int popActive = calculatePopActive(data, headers);
 					int tauxChomage = calculateTauxChomage(data, headers);
 
-					preparedStatement.setInt(1, codeVille);
+					if ( prixM2 == 0 || nomVille == null )
+						continue;
+
+					preparedStatement.setInt(1, Integer.parseInt(codeVille));
 					preparedStatement.setString(2, nomVille);
 					preparedStatement.setFloat(3, prixM2);
 					preparedStatement.setInt(4, age);
@@ -93,10 +98,6 @@ public class DataDemographyToDatabase {
 			}
 		}
 		return -1;
-	}
-
-	private float calculatePrixM2(String[] data, String[] headers) {
-		return 0;
 	}
 
 	private int calculateAge(String[] data, String[] headers) {

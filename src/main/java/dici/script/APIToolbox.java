@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.io.InputStream;
 
 /**
  * The APIToolbox class provides utility methods for interacting with APIs.
@@ -34,6 +35,7 @@ public class APIToolbox {
 				HttpURLConnection conn = ( HttpURLConnection ) url.openConnection ( );
 				conn.setRequestMethod   ( "GET"                        );
 				conn.setRequestProperty ( "Accept", "application/json" );
+				conn.setReadTimeout(Integer.MAX_VALUE);
 	
 				int responseCode = conn.getResponseCode ( );
 				if ( responseCode == 302 ) {
@@ -87,5 +89,29 @@ public class APIToolbox {
 			return 0;
 		}
 	}
+
+	public static String getCityName ( String codeInsee ) {
+		try {
+			codeInsee = String.format ( "%05d", Integer.parseInt ( codeInsee ) );
+			URL url = new URL ( "https://geo.api.gouv.fr/communes/" + codeInsee );
+			HttpURLConnection conn = ( HttpURLConnection ) url.openConnection ( );
+			conn.setRequestMethod   ( "GET"                        );
+			conn.setRequestProperty ( "Accept", "application/json" );
 	
+			int responseCode = conn.getResponseCode ( );
+			if ( responseCode != 200 ) {
+				throw new RuntimeException ( "Failed: HTTP error code: " + responseCode );
+			}
+	
+			try ( InputStreamReader reader = new InputStreamReader ( conn.getInputStream ( ) ) ) {
+				JsonElement jsonElement = JsonParser.parseReader ( reader );
+				JsonObject  jsonObject  = jsonElement.getAsJsonObject ( );
+	
+				return jsonObject.get ( "nom" ).getAsString ( );
+			}
+		} catch ( Exception e ) {
+			e.printStackTrace ( );
+			return null;
+		}
+	}
 }
