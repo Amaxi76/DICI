@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import dici.models.dto.DICI;
+import java.io.InputStream;
 
 public class DICIController {
 
