@@ -1,6 +1,7 @@
--- Date: 2025-01-21 -- 
--- Version: 1.1 --
--- Base de donnÃ©es : postgresql --
+-- Date: 2019-06-06 -- 
+-- Version: 1.0 --
+-- Base de données : postgresql --
+DROP SCHEMA IF EXISTS dici;
 
 DROP SCHEMA IF EXISTS dici CASCADE;
 CREATE SCHEMA IF NOT EXISTS dici;
