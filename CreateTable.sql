@@ -1,22 +1,22 @@
 -- Date: 2019-06-06 -- 
 -- Version: 1.0 --
 -- Base de données : postgresql --
+DROP SCHEMA IF EXISTS dici;
 
-DROP TABLE IF EXISTS "immobilier" CASCADE;
-DROP TABLE IF EXISTS "donnees_demo" CASCADE;
+DROP TABLE IF EXISTS dici.immobilier   CASCADE;
+DROP TABLE IF EXISTS dici.donnees_demo CASCADE;
+
+CREATE SCHEMA dici;
 
 /* 
  * Table: immobilier
  */
 
-CREATE TABLE "immobilier" (
-	"id" SERIAL NOT NULL,
-	"nom_ville" varchar(255) NOT NULL,
-	"prix_m2" int NOT NULL,
-	"type_zone" varchar(255) NOT NULL,
-	PRIMARY KEY ("id")
+CREATE TABLE dici.immobilier (
+	id        char    ( 5   ) NOT NULL,
+	prix_m2   float           NOT NULL,
+	PRIMARY KEY ( id )
 );
-
 
 /* 
  * Table: donnees_demo
