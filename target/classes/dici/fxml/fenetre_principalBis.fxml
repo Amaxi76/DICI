@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -10,12 +11,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane prefHeight="421.0" prefWidth="646.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dici.controller.MainController">
+<GridPane prefHeight="538.0" prefWidth="784.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dici.controller.MainController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="501.59999999999997" minHeight="10.0" prefHeight="501.59999999999997" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="46.19998779296873" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <GridPane prefHeight="422.0" prefWidth="291.0">
@@ -24,8 +26,8 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="358.4000305175781" minHeight="10.0" prefHeight="176.1999938964844" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="194.4" minHeight="10.0" prefHeight="43.600018310546886" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="204.3999816894531" minHeight="10.0" prefHeight="204.3999816894531" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="194.4" minHeight="10.0" prefHeight="18.800033569335938" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="267.9999664306641" minHeight="10.0" prefHeight="267.9999664306641" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -46,8 +48,13 @@
                   <ToggleButton mnemonicParsing="false" onAction="#afficherVueNbHabitant" prefHeight="26.0" prefWidth="126.0" styleClass="toggleButton" text="Nombre d'habitants" toggleGroup="$formulaire" />
                </children>
             </FlowPane>
-            <Pane fx:id="contenuDynamique" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+            <Pane fx:id="contenuDynamique" GridPane.rowIndex="2" />
          </children>
       </GridPane>
+      <FlowPane alignment="CENTER" GridPane.rowIndex="1">
+         <children>
+            <Button mnemonicParsing="false" text="Analyser" />
+         </children>
+      </FlowPane>
    </children>
 </GridPane>

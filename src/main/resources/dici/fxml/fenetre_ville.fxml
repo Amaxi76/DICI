@@ -10,11 +10,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <GridPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dici.controller.MainController">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="410.599951171875" minWidth="10.0" prefWidth="365.00001220703126" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.3999633789062" minWidth="10.0" prefWidth="232.7999877929687" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="410.599951171875" minWidth="10.0" prefWidth="292.0000244140625" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.1999633789063" minWidth="10.0" prefWidth="306.39997558593757" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -27,10 +26,10 @@
             <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addVille" text="Ajouter" />
          </children>
       </FlowPane>
-      <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+      <TableView fx:id="tableCity" GridPane.columnIndex="1">
         <columns>
-          <TableColumn prefWidth="30.400025963783264" />
-          <TableColumn prefWidth="198.39995574951172" resizable="false" text="Ville" />
+          <TableColumn fx:id="cityActionColumn" prefWidth="49.60003739595413" />
+          <TableColumn fx:id="cityNameColumn" prefWidth="256.79999923706055" resizable="false" text="Ville" />
         </columns>
       </TableView>
    </children>
