@@ -20,8 +20,8 @@ public class MainController
 	@FXML
 	private FlowPane listCity;
 
-	public void afficherVueVille     () { chargerVue("/dici/fxml/fenetre_ville.fxml"   );}
-	public void afficherVueNbHabitant() { chargerVue("/dici/fxml/fenetre_habitant.fxml");}
+	public void afficherVueVille     () { chargerVue("/dici/views/fenetre_ville.fxml"   );}
+	public void afficherVueNbHabitant() { chargerVue("/dici/views/fenetre_habitant.fxml");}
 
 	public void chargerVue(String fxml)
 	{

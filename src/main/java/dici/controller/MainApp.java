@@ -11,9 +11,8 @@ public class MainApp extends Application
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        System.out.println(getClass().getResource("/dici/fxml/fenetre_principal.fxml"));
         // Charger le fichier FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dici/fxml/fenetre_principalBis.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dici/views/fenetre_principalBis.fxml"));
         Parent root = loader.load();
 
         // Créer une scène
