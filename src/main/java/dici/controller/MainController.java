@@ -1,56 +1,30 @@
 package dici.controller;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
+import javafx.application.Application;
+import dici.views.MainView;
 
-import java.io.IOException;
+public class MainController {
 
-public class MainController 
-{
-	@FXML
-	private Pane contenuDynamique;
-	@FXML
-	private Button btnAdd;
-	@FXML 
-	private TextField txtCity;
-	@FXML
-	private FlowPane listCity;
+	private static MainController ctrl;
+	private        MainView       view;
 
-	public void afficherVueVille     () { chargerVue("/dici/views/fenetre_ville.fxml"   );}
-	public void afficherVueNbHabitant() { chargerVue("/dici/views/fenetre_habitant.fxml");}
-
-	public void chargerVue(String fxml)
+	public MainController() 
 	{
-		try
-		{
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-			Pane nouvelleVue  = loader.load();
-
-			nouvelleVue.prefWidthProperty ().bind(contenuDynamique.widthProperty ());
-        	nouvelleVue.prefHeightProperty().bind(contenuDynamique.heightProperty());
-
-			contenuDynamique.getChildren().clear();
-			contenuDynamique.getChildren().add(nouvelleVue);
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.view = new MainView();
+		Application.launch(MainApp.class);
 	}
 
-	public void addVille()
-	{
-		Button btnNewVille = new Button(txtCity.getText());
-		listCity.getChildren().add(btnNewVille);
-	}
+	public static MainController get()
+    {
+        if (MainController.ctrl == null) MainController.ctrl = new MainController();
 
-	public void syncValueSliderTextField()
-	{
-
-	}
+        return MainController.ctrl;
+    }
 
 	
+	public static void main(String[] args) {
+		MainController.get();
+	}
+
+
 }

@@ -51,7 +51,6 @@
     -fx-background-color: #0078d7; /* Couleur de fond bleue */
     -fx-text-fill: white; /* Texte blanc */
     -fx-font-size: 14px;
-    -fx-padding: 8 15 8 15; /* Marges internes */
     -fx-border-radius: 5; /* Coins arrondis */
     -fx-background-radius: 5;
     -fx-cursor: hand; /* Curseur en forme de main au survol */
@@ -87,14 +86,6 @@
     -fx-background-color: #1e7e34; /* Vert encore plus foncé quand pressé */
 }
 
-.city-button {
-    -fx-background-color: #575757;
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-padding: 8 15 8 15;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
-}
 
 .toggleButton {
     -fx-background-color: #4169E1; /* Royal Blue */
@@ -118,3 +109,81 @@
     -fx-background-radius: 0;
 }
 
+.large-cell-text {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Optionnel, pour un texte en gras */
+}
+
+/* Style pour le TableView */
+.tableCity {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc; 
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0);
+}
+
+/* Style pour l'en-tête des colonnes */
+.tableCity .column-header-background {
+    -fx-background-color: #f0f0f0;
+}
+
+.tableCity .column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+}
+
+/* Style pour les cellules */
+.tableCity .table-cell {
+    -fx-alignment: center-left;
+    -fx-font-size: 14px;
+}
+
+.tableCity .table-row-cell:odd {
+    -fx-background-color: #d3e6f5;
+}
+
+.tableCity .table-row-cell:even {
+    -fx-background-color: white;
+}
+
+
+.tableCity .table-row-cell:hover {
+    -fx-background-color: #e20707;
+}
+
+.tableCity .table-row-cell:selected {
+    -fx-background-color: #0078d7;
+    -fx-text-fill: white;
+}
+
+.tableCity .table-column#cityActionColumn {
+    -fx-pref-width: 80px;
+    -fx-max-width: 100px;
+    -fx-alignment: center;
+}
+
+.tableCity .table-column#cityNameColumn {
+    -fx-alignment: center-left;
+}
+
+.tableCity .delete-button {
+    -fx-background-color: white;
+    -fx-text-fill: red; 
+    -fx-border-color: red;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 7;
+    -fx-cursor: hand; 
+    -fx-font-size: 20px;
+}
+
+.tableCity .delete-button:hover {
+    -fx-background-color: #ffe6e6; 
+    -fx-text-fill: darkred;
+    -fx-border-color: darkred; 
+}

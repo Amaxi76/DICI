@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane prefHeight="563.0" prefWidth="784.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dici.views.MainView">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="501.59999999999997" minHeight="10.0" prefHeight="501.59999999999997" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="46.19998779296873" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <GridPane prefHeight="422.0" prefWidth="291.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="358.4000305175781" minHeight="10.0" prefHeight="176.1999938964844" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="194.4" minHeight="10.0" prefHeight="18.800033569335938" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="267.9999664306641" minHeight="10.0" prefHeight="267.9999664306641" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <ToggleButton mnemonicParsing="false" onAction="#afficherVueVille" prefHeight="26.0" prefWidth="120.0" style="-fx-border-style: thin;" styleClass="toggleButton" text="Choisir les villes">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="formulaire" />
+                     </toggleGroup></ToggleButton>
+                  <ToggleButton mnemonicParsing="false" onAction="#afficherVueNbHabitant" prefHeight="26.0" prefWidth="126.0" styleClass="toggleButton" text="Nombre d'habitants" toggleGroup="$formulaire" />
+               </children>
+            </FlowPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <GridPane fx:id="formVille" visible="false">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="60.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS" />
+                     </rowConstraints>
+                     <children>
+                        <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" vgap="10.0">
+                           <children>
+                              <Label text="Choisir une ville à ajouter à la liste" />
+                              <TextField fx:id="txtCity" />
+                              <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addVille" text="Ajouter" />
+                           </children>
+                        </FlowPane>
+                        <TableView fx:id="tableCity" styleClass="tableCity" GridPane.columnIndex="1">
+                          <columns>
+                            <TableColumn fx:id="cityActionColumn" maxWidth="100.0" minWidth="50.0" prefWidth="50.0" text="Action" />
+                            <TableColumn fx:id="cityNameColumn" text="Ville" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </GridPane>
+                  <VBox fx:id="formHabitant" alignment="CENTER" fillWidth="false" prefHeight="203.0" prefWidth="321.0" stylesheets="@../styles/style.css" visible="false">
+                     <children>
+                        <FlowPane alignment="CENTER" hgap="10.0">
+                           <children>
+                                 <RadioButton fx:id="radioPlus10" mnemonicParsing="false" text="+10" />
+                                 <RadioButton fx:id="radioPlus100" mnemonicParsing="false" text="+100" />
+                                 <RadioButton fx:id="radioPlus1000" mnemonicParsing="false" text="+1000" />
+                           </children>
+                        </FlowPane>
+                        <!-- Label pour le titre -->
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Nombre d'habitants" VBox.vgrow="ALWAYS" />
+                  
+                        <!-- Champ de texte -->
+                        <TextField onInputMethodTextChanged="#syncValueSliderTextField" prefHeight="34.0" prefWidth="226.0" VBox.vgrow="ALWAYS" />
+                  
+                        <!-- Label pour l'arrondi -->
+                        <Label style="-fx-font-size: 14px;" text="Arrondi" />
+                  
+                        <!-- Slider avec ajustements -->
+                        <Slider fx:id="sliderArrondi" blockIncrement="100.0" majorTickUnit="10.0" max="1000.0" onDragDetected="#syncValueSliderTextField" showTickLabels="true" VBox.vgrow="ALWAYS" />
+                        <TextField fx:id="txtArrondi" onAction="#syncValueSliderTextField" prefHeight="34.0" prefWidth="98.0" />
+                     </children>
+                  </VBox>
+                  <FlowPane fx:id="loadPage" alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/wait.gif" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" text="Veuillez patienter" />
+                     </children>
+                  </FlowPane>
+               </children>
+            </StackPane>
+         </children>
+      </GridPane>
+      <FlowPane alignment="CENTER" prefHeight="65.0" prefWidth="784.0" GridPane.rowIndex="1">
+         <children>
+            <Button mnemonicParsing="false" onAction="#launchAnalyse" text="Analyser" />
+         </children>
+      </FlowPane>
+   </children>
+</GridPane>
