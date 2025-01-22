@@ -1,8 +1,8 @@
 package dici.sharing;
 
-import javax.swing.JPanel;
-
+import org.jfree.chart.ChartPanel;
 import dici.stats.methods.IMethod;
+import dici.stats.methods.PearsonTools; //TODO:  "problème" avec le fait qu'il n'y a pas d'abstraction sur les outils "Pearson"
 
 public class AnalysisResponse {
 	//private IMethod statMethod;
