@@ -7,7 +7,7 @@ import dici.stats.methods.IMethod;
 public class AnalysisResponse {
 	//private IMethod statMethod;
 
-	private JPanel panelGraph;
+	private ChartPanel panelGraph;
 	private boolean isCorrelated;
 	private String correlationStrength;
 	private double correlationValue;
@@ -18,10 +18,10 @@ public class AnalysisResponse {
   this.correlationStrength = PearsonTools.getStringCorrelation( this.correlationValue );
 
   LineGraph lineGraph = new LineGraph( statsMethod.getXYCollection() ); 
-  this.panelGraph = lineGraph.getPanel();
+  this.panelGraph = new ChartPanel( lineGraph.getChart() );
 	}
 
-	public JPanel getPanelGraph( ){
+	public ChartPanel getPanelGraph( ){
   return this.panelGraph;
 	}
 
