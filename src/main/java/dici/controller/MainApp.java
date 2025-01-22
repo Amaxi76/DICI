@@ -10,7 +10,6 @@ public class MainApp extends Application
 {
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         // Charger le fichier FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dici/fxml/main.fxml"));
         Parent root = loader.load();
@@ -24,9 +23,5 @@ public class MainApp extends Application
 
         // Afficher la fenêtre
         primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
