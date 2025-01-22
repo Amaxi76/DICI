@@ -35,6 +35,11 @@ public class Pearson implements IMethod {
 		return this.numerator() / this.denominator();
 	}
 
+ @Override
+ public XYCollection getXYCollection(){
+  return this.datas;
+}
+
 	/*@Deprecated
 	public double getSignificance( double factor ){
 		int n = this.datas.size();
