@@ -15,7 +15,7 @@ public class AnalysisRequest {
 	}
 
 	public AnalysisResponse sendRequest(){
-		/*IMethod method = new Pearson( XYCollectionTools.getXYCollection(data, colNames) );
-		return new AnalysisResponse( method.compute() );*/
+		IMethod method = new Pearson( XYCollectionTools.getXYCollection(data, colNames) );
+		return new AnalysisResponse( method );
 	}
 }
