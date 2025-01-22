@@ -9,6 +9,16 @@ public class Pearson implements IMethod {
 		this.datas = datas;
 	}
 
+	@Override
+	public XYCollection getXYCollection(){
+		return this.datas;
+	}
+
+	@Override
+	public double compute(){
+		return this.numerator() / this.denominator();
+	}
+
 	private double numerator(){
 		return this.datas.covariance();
 	}
@@ -29,27 +39,4 @@ public class Pearson implements IMethod {
 
 		return Math.sqrt(sumX * sumY);
 	}
-
-	@Override
-	public double compute(){
-		return this.numerator() / this.denominator();
-	}
-
- @Override
- public XYCollection getXYCollection(){
-  return this.datas;
-}
-
-	/*@Deprecated
-	public double getSignificance( double factor ){
-		int n = this.datas.size();
-		double numerator = Math.abs( factor ) * Math.sqrt( n - 2 );
-		double denominator = Math.sqrt( 1 - Math.pow(factor, 2) );
-		return numerator / denominator;
-	}
-
-	@Deprecated
-	public boolean isNullHyphothesisSignificance( double significance ){
-		return this.getSignificance( significance ) < 0.05;
-	}*/
 }

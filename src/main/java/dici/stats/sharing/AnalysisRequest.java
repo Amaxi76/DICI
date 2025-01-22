@@ -1,7 +1,6 @@
-package dici.sharing;
+package dici.stats.sharing;
 
 import dici.stats.methods.Pearson;
-import dici.stats.objects.XYCollection;
 import dici.stats.objects.XYCollectionTools;
 import dici.stats.methods.IMethod;
 

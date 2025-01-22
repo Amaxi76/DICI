@@ -103,12 +103,4 @@ public class LineGraph{
 
 		return chart;
 	}
-
-	public void show(){
-		JFrame frame = new JFrame("Graphique avec JFreeChart");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new ChartPanel( this.getChart() ));
-		frame.pack();
-		frame.setVisible(true);
-	}
 }

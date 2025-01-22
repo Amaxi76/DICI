@@ -1,13 +1,7 @@
 package dici.stats;
 
-import dici.stats.graph.LineGraph;
-import dici.stats.methods.IMethod;
-import dici.stats.methods.Pearson;
-import dici.stats.methods.PearsonTools;
-import dici.stats.objects.XYCollection;
-import dici.stats.objects.XYCollectionTools;
-
-public class TestData {
+public class TestDatasets {
+	public static final String[] COL_NAMES_GLICEMIE = {"taux glicemie", "poids"};
 	public static final double[][] DATA_GLICEMIE = {
 		{1.08, 68},
 		{0.84, 55.4},
@@ -32,6 +26,7 @@ public class TestData {
 	};
 
 	//https://www.nagwa.com/fr/explainers/143190760373/
+	public static final String[] COL_NAMES_SAUT = {"distance", "hauteur personne"};
 	public static final double[][] DATA_SAUT = {
 		{5.51, 1.65},
 		{5.72, 1.77},
@@ -64,18 +59,4 @@ public class TestData {
 		{1.83, 97},
 		{1.53, 65}
 	};
-
-	public static void main(String[] args) {
-		XYCollection datas = XYCollectionTools.getXYCollection( DATA_TAILLE_POIDS, COL_NAMES_TAILLE_POIDS ); //DATA_GLICEMIE	DATA_SAUT	DATA_TAILLE_POIDS
-		IMethod pearson = new Pearson( datas );
-
-		double correlation = pearson.compute();
-		System.out.println( "value of correlation: " + correlation );
-		System.out.println( "correlation is " + PearsonTools.getStringCorrelation(correlation) );
-		System.out.println( "correlation is " + PearsonTools.getStringGrowth(correlation) );
-		System.out.println( "correlation is " + PearsonTools.isCorrelated(correlation) );
-
-		LineGraph graph = new LineGraph( datas );
-		graph.show();
-	}
 }

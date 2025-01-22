@@ -20,11 +20,6 @@ public class ValuesCollection {
 	public double getValue(int i){
 		return this.ensValue[i];
 	}
-	
-	@Deprecated
-	public double[] getEnsValue(){
-		return this.ensValue;
-	}
 
 	public double avg(){
 		double sum = 0;
