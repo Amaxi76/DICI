@@ -1,19 +1,33 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "java",
-            "name": "DataDemographyToDatabase",
-            "request": "launch",
-            "mainClass": "dici.script.DataDemographyToDatabase",
-            "projectName": "dici"
-        },
-        {
-            "type": "java",
-            "name": "Launch JavaFX Application",
-            "request": "launch",
-            "mainClass": "dici.controller.MainApp",
-            "vmArgs": "--module-path \"${workspaceFolder}/lib/javafx-sdk-23.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
-        }
-    ]
+		{
+			"type": "java",
+			"name": "TestSharing",
+			"request": "launch",
+			"mainClass": "dici.stats.sharing.TestSharing",
+			"projectName": "dici"
+		},
+		{
+			"type": "java",
+			"name": "TestStats",
+			"request": "launch",
+			"mainClass": "dici.stats.TestStats",
+			"projectName": "dici"
+		},
+		{
+			"type": "java",
+			"name": "DataDemographyToDatabase",
+			"request": "launch",
+			"mainClass": "dici.script.DataDemographyToDatabase",
+			"projectName": "dici"
+		},
+		{
+			"type": "java",
+			"name": "Launch JavaFX Application",
+			"request": "launch",
+			"mainClass": "dici.controller.MainApp",
+			"vmArgs": "--module-path \"${workspaceFolder}/lib/javafx-sdk-23.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+		}
+	]
 }
