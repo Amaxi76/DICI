@@ -8,4 +8,9 @@ public class Spearman implements IMethod {
 	public double compute() {
 		return 0;
 	}
+
+ @Override
+ public XYCollection getXYCollection() {
+  return null;
+ }
 }
