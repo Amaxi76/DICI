@@ -83,7 +83,7 @@ public class TestSharing {
 		}
 
 		public AnalysisResponse getStats( String request ) {
-			double[][] data = this.model.getDatas( request );
+			double[][] data   = this.model.getDatas( request );
 			String[] colNames = this.model.getLabels( request );
 			AnalysisRequest analysisRequest = new AnalysisRequest( data, colNames );
 			return analysisRequest.sendRequest();

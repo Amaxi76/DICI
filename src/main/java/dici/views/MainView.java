@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 
@@ -164,12 +165,15 @@ public class MainView extends Parent {
 		loadPage    .setVisible(true );
 
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/dici/fxml/analyseData.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/analyseData.fxml"));
 			Parent root = loader.load();
 			
 			Stage nouvelleStage = new Stage();
 			nouvelleStage.setTitle("Analyse");
 			nouvelleStage.setScene(new Scene(root));
+			// Charger l'icône personnalisée
+			Image appIcon = new Image(getClass().getResourceAsStream("/images/logo.png"));
+			nouvelleStage.getIcons().add(appIcon);
 			
 			nouvelleStage.show();
 		} catch (IOException e) {

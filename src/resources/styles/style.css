@@ -89,24 +89,24 @@
 
 .toggleButton {
     -fx-background-color: #4169E1; /* Royal Blue */
-    -fx-border-radius: 0;
+    -fx-border-radius: 5;
     -fx-text-fill: white;
-    -fx-background-radius: 0;
+    -fx-background-radius: 5;
     -fx-transition: -fx-background-color 0.3s;
 }
 
 .toggleButton:hover {
     -fx-background-color: #1E90FF; /* Dodger Blue */
-    -fx-border-radius: 0;
+    -fx-border-radius: 5;
     -fx-text-fill: white;
-    -fx-background-radius: 0;
+    -fx-background-radius: 5;
 }
 
 .toggleButton:selected {
     -fx-background-color: #00008B; /* Dark Blue */
-    -fx-border-radius: 0;
+    -fx-border-radius: 5;
     -fx-text-fill: white;
-    -fx-background-radius: 0;
+    -fx-background-radius: 5;
 }
 
 .large-cell-text {
@@ -150,9 +150,8 @@
     -fx-background-color: white;
 }
 
-
 .tableCity .table-row-cell:hover {
-    -fx-background-color: #e20707;
+    -fx-background-color: #bdbdbd;
 }
 
 .tableCity .table-row-cell:selected {

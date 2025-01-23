@@ -3,9 +3,17 @@ package dici.views;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.embed.swing.SwingNode;
+
+import java.awt.Dimension;
+
+import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
+
+import dici.stats.TestDatasets;
+import dici.stats.sharing.*;
 
 public class AnalyseView 
 {
@@ -16,29 +24,44 @@ public class AnalyseView
 	@FXML private GridPane gridPane;
 	@FXML private FlowPane loadPage;
 
-	private double[][] datas; //récupèré via api ou JSP
+	public double[][] datas; //récupèré via api ou JSP
 
-	
 	@FXML
-	public void initialize() {
+	public void initialize() 
+	{
 		Task<Void> dataLoadingTask = new Task<Void>() {
 			@Override
-			protected Void call() throws Exception {
-				datas = // Méthode pour récupérer les datas
+			protected Void call() throws Exception 
+			{
+				AnalyseView.this.datas = TestDatasets.DATA_GLICEMIE;
 				return null;
 			}
 		};
 
 		dataLoadingTask.setOnSucceeded(event -> {
-			ResponseStats rs = this.getStats("graphique");
+			AnalysisResponse response = this.getStats("graphique");
 			
-			lblCorrelation.setText(rs.getCorrelation());
-			lblPercentCorrelation.setText(rs.getPercentCorrelation());
-			lblStrenghtCorrelation.setText(rs.getStrenghtCorrelation());
-			this.gridPane.add(rs.getGraphPanel(), 0, 1);
-			
-			loadPage.setVisible(false);
-			gridPane.setVisible(true);
+			lblCorrelation        .setText( response.isCorrelated          () ? "OUI" : "NON");
+			lblPercentCorrelation .setText((response.getCorrelationValue   () * 100) + " %"  );
+			lblStrenghtCorrelation.setText( response.getCorrelationStrength());
+
+			SwingNode swingNode = new SwingNode();
+
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					JComponent panel = response.getPanelGraph();
+					panel.setPreferredSize(new Dimension(600,400));
+					panel.revalidate(); 
+					panel.repaint   (); 
+
+					swingNode.setContent(panel);
+				}
+            });
+		
+			this.loadPage.setVisible(false);
+			this.gridPane.setVisible(true );
+			this.gridPane.add(swingNode,0,1);
 		});
 
 		Thread thread = new Thread(dataLoadingTask);
@@ -46,15 +69,18 @@ public class AnalyseView
 	}
 
 
-	public ResponseStats getStats( String nomGraphique )
+	public AnalysisResponse getStats( String nomGraphique )
 	{
-		if( nomGraphique == "graphique prix / revenu")
-		{
-			String[] colNames = {"prix", "revenu moyen"};
-		}
+		String[] colNames = TestDatasets.COL_NAMES_GLICEMIE;
 
-		RequestStat rs = new RS( this.datas, colNames );
-		return rs.request();
+		// if( nomGraphique == "graphique prix / revenu")
+		// {
+		// 	colNames = {"prix", "revenu moyen"};
+		// }
+
+		AnalysisRequest request = new AnalysisRequest( this.datas, colNames );
+		
+		return request.sendRequest();
 	}
 }
 

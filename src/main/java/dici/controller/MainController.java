@@ -20,11 +20,8 @@ public class MainController {
 
         return MainController.ctrl;
     }
-
 	
 	public static void main(String[] args) {
 		MainController.get();
 	}
-
-
 }
