@@ -25,6 +25,19 @@ public class TestDatasets {
 		{1.07, 73}
 	};
 
+	public static final String[] COL_NAMES_VILLE_AGE = {"prix m2", "age moyen"};
+	public static final double[][] DATA_VILLE_AGE = {
+            {3932  ,         51 },
+			{3808.346923828125,   36},
+			{2772.4130859375 , 39 },
+			{3539.7734375, 36 },
+			{2419.150634765625, 37 },
+			{2742.863525390625, 39 },
+			{2902.0869140625, 39 },
+			{2630.916015625, 38 },
+			{3127.647216796875, 38 }
+	};
+	
 	//https://www.nagwa.com/fr/explainers/143190760373/
 	public static final String[] COL_NAMES_SAUT = {"distance", "hauteur personne"};
 	public static final double[][] DATA_SAUT = {

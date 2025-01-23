@@ -42,29 +42,35 @@ public class AnalyseView
 		// cities.add("Toulouse");
 		// cities.add("Nice");
 		// cities.add("Nantes");
-
-		List<Map<String, Object>> citiesInfo = database.getCityInfoByNames(MainController.get().getNameCity());
+		
+		//Map<String, List<String>> citiesInfo = database.getCityInfoByNames(MainController.get().getNameCity());
+		//System.out.println(citiesInfo);
 		Task<Void> dataLoadingTask = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception 
 			{
-				AnalyseView.this.datas = new double[citiesInfo.size()][2];
-				for (int i = 0; i < citiesInfo.size(); i++) 
-				{
-					AnalyseView.this.datas[i][0] = (double) citiesInfo.get(i).get("prix_m2");
-					System.out.println(AnalyseView.this.datas[i][0]);
-					AnalyseView.this.datas[i][1] = (double) citiesInfo.get(i).get("age");
-					System.out.println(AnalyseView.this.datas[i][1]);
-				}
+				System.out.println("je suis ici");
+				AnalyseView.this.datas = TestDatasets.DATA_VILLE_AGE;
+
+			// 	for(Map.Entry<String,List<String>> entry : citiesInfo.entrySet())
+			// 	{
+			// 		for (int i = 0; i < entry.getValue().size(); i++) 
+			// 		{
+			// 			for (int j = 0; j < entry.getValue().size(); j++) 
+			// 			{
+			// 				AnalyseView.this.datas[i][j] = Double.parseDouble(entry.getValue().get(j));
+			// 			}
+			// 		}
+			// 	}
 				
-				for (int i = 0; i < AnalyseView.this.datas.length; i++) 
-				{
-					for (int j = 0; j < AnalyseView.this.datas[i].length; j++) 
-					{
-						System.out.print(AnalyseView.this.datas[i][j] + " ");
-					}
-					System.out.println();
-				}
+			// 	for (int i = 0; i < AnalyseView.this.datas.length; i++) 
+			// 	{
+			// 		for (int j = 0; j < AnalyseView.this.datas[i].length; j++) 
+			// 		{
+			// 			System.out.print(AnalyseView.this.datas[i][j] + " ");
+			// 		}
+			// 		System.out.println();
+			// 	}
 				return null;
 			}
 		};
@@ -101,7 +107,7 @@ public class AnalyseView
 
 	public AnalysisResponse getStats( String nomGraphique )
 	{
-		String[] colNames = TestDatasets.COL_NAMES_GLICEMIE;
+		String[] colNames = TestDatasets.COL_NAMES_VILLE_AGE;
 
 		// if( nomGraphique == "graphique prix / revenu")
 		// {

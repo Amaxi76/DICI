@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import dici.classes.City;
 import dici.controller.MainController;
 
-public class MainView extends Parent {
+public class MainView {
 
 	private MainController controller;
 
@@ -113,6 +114,8 @@ public class MainView extends Parent {
 
 
 	public void addVille() {
+	//	this.showPopUp();
+
 		String cityName = this.txtCity.getText();
 		if (cityName == null || cityName.trim().isEmpty()) {
 			System.out.println("Veuillez entrer un nom de ville valide.");
@@ -125,6 +128,19 @@ public class MainView extends Parent {
 
 		this.updateTable();
 		this.txtCity.clear();
+	}
+
+	public void afficherPopUp()
+	{
+		Popup popUp = new Popup();
+
+		Label label = new Label("Il n'y a pas de données pour cette ville");
+		label.setStyle    ("-fx-background-color: white;");
+		label.setMinWidth (80);
+		label.setMinHeight(50);
+		popUp.getContent().add(label);
+
+		//popUp.show(this);
 	}
 
 	public void removeCity(City city) {
