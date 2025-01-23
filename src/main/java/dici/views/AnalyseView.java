@@ -8,10 +8,15 @@ import javafx.scene.layout.GridPane;
 import javafx.embed.swing.SwingNode;
 
 import java.awt.Dimension;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 
+import dici.controller.MainController;
+import dici.services.DatabaseService;
 import dici.stats.TestDatasets;
 import dici.stats.sharing.*;
 
@@ -29,11 +34,37 @@ public class AnalyseView
 	@FXML
 	public void initialize() 
 	{
+
+		System.out.println();
+
+		DatabaseService database = new DatabaseService();
+		// List<String> cities = new ArrayList<String>();
+		// cities.add("Toulouse");
+		// cities.add("Nice");
+		// cities.add("Nantes");
+
+		List<Map<String, Object>> citiesInfo = database.getCityInfoByNames(MainController.get().getNameCity());
 		Task<Void> dataLoadingTask = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception 
 			{
-				AnalyseView.this.datas = TestDatasets.DATA_GLICEMIE;
+				AnalyseView.this.datas = new double[citiesInfo.size()][2];
+				for (int i = 0; i < citiesInfo.size(); i++) 
+				{
+					AnalyseView.this.datas[i][0] = (double) citiesInfo.get(i).get("prix_m2");
+					System.out.println(AnalyseView.this.datas[i][0]);
+					AnalyseView.this.datas[i][1] = (double) citiesInfo.get(i).get("age");
+					System.out.println(AnalyseView.this.datas[i][1]);
+				}
+				
+				for (int i = 0; i < AnalyseView.this.datas.length; i++) 
+				{
+					for (int j = 0; j < AnalyseView.this.datas[i].length; j++) 
+					{
+						System.out.print(AnalyseView.this.datas[i][j] + " ");
+					}
+					System.out.println();
+				}
 				return null;
 			}
 		};
@@ -67,7 +98,6 @@ public class AnalyseView
 		Thread thread = new Thread(dataLoadingTask);
 		thread.start();
 	}
-
 
 	public AnalysisResponse getStats( String nomGraphique )
 	{

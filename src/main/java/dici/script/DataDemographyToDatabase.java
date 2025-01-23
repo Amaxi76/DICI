@@ -124,6 +124,7 @@ public class DataDemographyToDatabase {
 
 	private int calculateNiveauDiplome(String[] data, String[] headers) {
 		int diplomeSup2Index = findIndex(headers, "P21_NSCOL15P_SUP2");
+		int diplomeBacIndex = findIndex(headers, "P21_NSCOL15P");
 		int diplomeSup34Index = findIndex(headers, "P21_NSCOL15P_SUP34");
 		int diplomeSup5Index = findIndex(headers, "P21_NSCOL15P_SUP5");
 		int populationIndex = findIndex(headers, "C21_POP15P");
@@ -132,8 +133,9 @@ public class DataDemographyToDatabase {
 		float diplomeSup34 = Float.parseFloat(data[diplomeSup34Index]);
 		float diplomeSup5 = Float.parseFloat(data[diplomeSup5Index]);
 		float population = Float.parseFloat(data[populationIndex]);
+		float diplomeBac = Float.parseFloat(data[diplomeBacIndex]);
 
-		return population == 0 ? 0 : (int) ((diplomeSup2 * 2 + diplomeSup34 * 3.5 + diplomeSup5 * 5) / population);
+		return population == 0 ? 0 : (int) ((diplomeBac + diplomeSup2 * 2 + diplomeSup34 * 3.5 + diplomeSup5 * 5) / population);
 	}
 
 	private int calculateDensitePop(String[] data, String[] headers) {

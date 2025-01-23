@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import dici.classes.City;
 import dici.controller.MainController;
@@ -164,6 +165,8 @@ public class MainView extends Parent {
 		loadPage    .setVisible(true );
 		loadPage    .setVisible(true );
 
+		MainController.get().setListCity(this.listCity);
+
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/analyseData.fxml"));
 			Parent root = loader.load();
@@ -171,6 +174,7 @@ public class MainView extends Parent {
 			Stage nouvelleStage = new Stage();
 			nouvelleStage.setTitle("Analyse");
 			nouvelleStage.setScene(new Scene(root));
+			
 			// Charger l'icône personnalisée
 			Image appIcon = new Image(getClass().getResourceAsStream("/images/logo.png"));
 			nouvelleStage.getIcons().add(appIcon);
