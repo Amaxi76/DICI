@@ -1,10 +1,10 @@
-package dici.stats.sharing;
+package dici.models.stats.sharing;
 
 import org.jfree.chart.ChartPanel;
 
-import dici.stats.graph.LineGraph;
-import dici.stats.methods.IMethod;
-import dici.stats.methods.MethodTools;
+import dici.models.stats.graph.LineGraph;
+import dici.models.stats.methods.IMethod;
+import dici.models.stats.methods.MethodTools;
 
 public class AnalysisResponse {
 

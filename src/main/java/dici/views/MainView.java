@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.application.Application;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -19,9 +20,13 @@ import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import dici.classes.City;
-import dici.controller.MainController;
+import dici.controllers.MainController;
+import dici.models.api.APITools;
+import dici.models.dao.DatabaseService;
+import dici.views.components.City;
 
 public class MainView {
 
@@ -46,9 +51,12 @@ public class MainView {
 	@FXML private TableColumn<City, String> cityNameColumn;
 	@FXML private TableColumn<City, Button> cityActionColumn;
 
-	public MainView()
+	public MainView ( MainController controller )
 	{
+		this.controller = controller;
 		this.listCity = FXCollections.observableArrayList();
+		Application.launch ( AppViewTools.class );
+
 	}
 
 	@FXML
@@ -122,6 +130,13 @@ public class MainView {
 			return;
 		}
 
+		DatabaseService database = new DatabaseService();
+		Map<String, List<String>> citiesInfo = database.getCityInfoByNames(new ArrayList<>(List.of(cityName)));
+		List<String> cityInfo = citiesInfo.get(cityName);
+		String codeVille = cityInfo.getLast();
+
+		database.updatePriceInDatabase(Integer.parseInt(codeVille), APITools.getPriceM2(codeVille));
+
 		City newItem = new City(cityName.trim());
 		newItem.getDeleteBtn().setOnAction(e -> removeCity(newItem));
 		listCity.add(newItem);
@@ -181,7 +196,7 @@ public class MainView {
 		loadPage    .setVisible(true );
 		loadPage    .setVisible(true );
 
-		MainController.get().setListCity(this.listCity);
+		// MainController.get().setListCity(this.listCity);
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/analyseData.fxml"));

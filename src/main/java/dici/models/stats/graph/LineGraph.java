@@ -1,4 +1,4 @@
-package dici.stats.graph;
+package dici.models.stats.graph;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -7,7 +7,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-import dici.stats.objects.XYCollection;
+import dici.models.stats.objects.XYCollection;
 
 import javax.swing.*;
 

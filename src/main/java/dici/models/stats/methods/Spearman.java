@@ -1,6 +1,6 @@
-package dici.stats.methods;
+package dici.models.stats.methods;
 
-import dici.stats.objects.XYCollection;
+import dici.models.stats.objects.XYCollection;
 
 @Deprecated
 // note: not yet implemented

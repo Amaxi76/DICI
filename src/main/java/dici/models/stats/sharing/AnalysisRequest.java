@@ -1,8 +1,8 @@
-package dici.stats.sharing;
+package dici.models.stats.sharing;
 
-import dici.stats.methods.Pearson;
-import dici.stats.objects.XYCollectionTools;
-import dici.stats.methods.IMethod;
+import dici.models.stats.methods.IMethod;
+import dici.models.stats.methods.Pearson;
+import dici.models.stats.objects.XYCollectionTools;
 
 public class AnalysisRequest {
 	private double[][] data;

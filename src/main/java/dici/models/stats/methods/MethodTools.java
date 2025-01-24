@@ -1,4 +1,4 @@
-package dici.stats.methods;
+package dici.models.stats.methods;
 
 public class MethodTools {
 	

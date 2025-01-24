@@ -1,4 +1,4 @@
-package dici.script;
+package dici.models.api;
 
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -7,12 +7,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.io.InputStream;
 
 /**
  * The APIToolbox class provides utility methods for interacting with APIs.
  */
-public class APIToolbox {
+public class APITools {
 
 	/**
 	 * Retrieves the average price per square meter for real estate transactions in a given area.

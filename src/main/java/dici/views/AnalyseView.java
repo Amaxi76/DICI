@@ -15,10 +15,10 @@ import java.util.Map;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 
-import dici.controller.MainController;
-import dici.services.DatabaseService;
-import dici.stats.TestDatasets;
-import dici.stats.sharing.*;
+import dici.controllers.MainController;
+import dici.models.dao.DatabaseService;
+import dici.models.stats.TestDatasets;
+import dici.models.stats.sharing.*;
 
 public class AnalyseView 
 {
@@ -34,75 +34,75 @@ public class AnalyseView
 	@FXML
 	public void initialize() 
 	{
-
-		System.out.println();
-
 		DatabaseService database = new DatabaseService();
-		// List<String> cities = new ArrayList<String>();
-		// cities.add("Toulouse");
-		// cities.add("Nice");
-		// cities.add("Nantes");
 		
-		//Map<String, List<String>> citiesInfo = database.getCityInfoByNames(MainController.get().getNameCity());
-		//System.out.println(citiesInfo);
-		Task<Void> dataLoadingTask = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception 
-			{
-				System.out.println("je suis ici");
-				AnalyseView.this.datas = TestDatasets.DATA_VILLE_AGE;
+		// Map<String, List<String>> citiesInfo = database.getCityInfoByNames(MainController.get().getNameCity());
+		// Task<Void> dataLoadingTask = new Task<Void>() {
+		// 	@Override
+		// 	protected Void call() throws Exception 
+		// 	{
+		// 		int rowCount = citiesInfo.size();
+		// 		int colCount = citiesInfo.values().stream().mapToInt(List::size).max().orElse(0);
+		// 		AnalyseView.this.datas = new double[rowCount][colCount];
 
-			// 	for(Map.Entry<String,List<String>> entry : citiesInfo.entrySet())
-			// 	{
-			// 		for (int i = 0; i < entry.getValue().size(); i++) 
-			// 		{
-			// 			for (int j = 0; j < entry.getValue().size(); j++) 
-			// 			{
-			// 				AnalyseView.this.datas[i][j] = Double.parseDouble(entry.getValue().get(j));
-			// 			}
-			// 		}
-			// 	}
+		// 		int i = 0;
+		// 		for(Map.Entry<String,List<String>> entry : citiesInfo.entrySet())
+		// 		{
+		// 			List<String> values = entry.getValue();
+		// 			for (int j = 0; j < values.size(); j++) 
+		// 			{
+		// 				try {
+		// 					AnalyseView.this.datas[i][j] = Double.parseDouble(values.get(j));
+		// 				} catch (NumberFormatException e) {
+		// 					System.err.println("Erreur de parsing pour la valeur: " + values.get(j));
+		// 					AnalyseView.this.datas[i][j] = 0.0; // ou une autre valeur par défaut
+		// 				}
+		// 			}
+		// 			i++;
+		// 		}
 				
-			// 	for (int i = 0; i < AnalyseView.this.datas.length; i++) 
-			// 	{
-			// 		for (int j = 0; j < AnalyseView.this.datas[i].length; j++) 
-			// 		{
-			// 			System.out.print(AnalyseView.this.datas[i][j] + " ");
-			// 		}
-			// 		System.out.println();
-			// 	}
-				return null;
-			}
-		};
+		// 		// Affichage pour debug
+		// 		System.out.println(AnalyseView.this.datas.length);
+		// 		for (double[] row : AnalyseView.this.datas) 
+		// 		{
+		// 			for (double value : row) 
+		// 			{
+		// 				System.out.print(value + " ");
+		// 			}
+		// 			System.out.println();
+		// 		}
+		// 		return null;
+		// 	}
+		// };
 
-		dataLoadingTask.setOnSucceeded(event -> {
-			AnalysisResponse response = this.getStats("graphique");
+		// dataLoadingTask.setOnSucceeded(event -> {
+		// 	AnalysisResponse response = this.getStats("graphique");
 			
-			lblCorrelation        .setText( response.isCorrelated          () ? "OUI" : "NON");
-			lblPercentCorrelation .setText((response.getCorrelationValue   () * 100) + " %"  );
-			lblStrenghtCorrelation.setText( response.getCorrelationStrength());
+		// 	lblCorrelation        .setText( response.isCorrelated          () ? "OUI" : "NON");
+		// 	lblPercentCorrelation .setText((response.getCorrelationValue   () * 100) + " %"  );
+		// 	lblStrenghtCorrelation.setText( response.getCorrelationStrength());
 
-			SwingNode swingNode = new SwingNode();
+		// 	SwingNode swingNode = new SwingNode();
 
-			SwingUtilities.invokeLater(new Runnable() {
-				@Override
-				public void run() {
-					JComponent panel = response.getPanelGraph();
-					panel.setPreferredSize(new Dimension(600,400));
-					panel.revalidate(); 
-					panel.repaint   (); 
+		// 	SwingUtilities.invokeLater(new Runnable() {
+		// 		@Override
+		// 		public void run() {
+		// 			JComponent panel = response.getPanelGraph();
+		// 			panel.setPreferredSize(new Dimension(600,400));
+		// 			panel.revalidate(); 
+		// 			panel.repaint   (); 
 
-					swingNode.setContent(panel);
-				}
-            });
+		// 			swingNode.setContent(panel);
+		// 		}
+        //     });
 		
-			this.loadPage.setVisible(false);
-			this.gridPane.setVisible(true );
-			this.gridPane.add(swingNode,0,1);
-		});
+		// 	this.loadPage.setVisible(false);
+		// 	this.gridPane.setVisible(true );
+		// 	this.gridPane.add(swingNode,0,1);
+		// });
 
-		Thread thread = new Thread(dataLoadingTask);
-		thread.start();
+		// Thread thread = new Thread(dataLoadingTask);
+		// thread.start();
 	}
 
 	public AnalysisResponse getStats( String nomGraphique )

@@ -1,4 +1,4 @@
-package dici.stats;
+package dici.models.stats;
 
 public class TestDatasets {
 	public static final String[] COL_NAMES_GLICEMIE = {"taux glicemie", "poids"};

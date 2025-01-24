@@ -1,15 +1,15 @@
-package dici.stats;
+package dici.models.stats;
 
 import javax.swing.JFrame;
 
 import org.jfree.chart.ChartPanel;
 
-import dici.stats.graph.LineGraph;
-import dici.stats.methods.IMethod;
-import dici.stats.methods.Pearson;
-import dici.stats.methods.MethodTools;
-import dici.stats.objects.XYCollection;
-import dici.stats.objects.XYCollectionTools;
+import dici.models.stats.graph.LineGraph;
+import dici.models.stats.methods.IMethod;
+import dici.models.stats.methods.MethodTools;
+import dici.models.stats.methods.Pearson;
+import dici.models.stats.objects.XYCollection;
+import dici.models.stats.objects.XYCollectionTools;
 
 public class TestStats {
 	public static void main(String[] args) {

@@ -1,12 +1,10 @@
-package dici.services;
+package dici.models.dao;
 
 import java.sql.*;
 import java.util.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.stream.Collectors;
-import java.io.InputStream;
-import java.io.InputStream;
 
 public class DatabaseService {
 
@@ -45,6 +43,7 @@ public class DatabaseService {
 					cityInfo.add(rs.getString("densite_pop"));
 					cityInfo.add(rs.getString("pop_active"));
 					cityInfo.add(rs.getString("taux_chomage"));
+					cityInfo.add(rs.getString("code_ville"));
 
 					results.put(cityName, cityInfo);
 				}
@@ -55,6 +54,22 @@ public class DatabaseService {
 		}
 
 		return results;
+	}
+
+	public static void updatePriceInDatabase ( int codeInsee, float prix_m2 ) {
+		String query = "UPDATE dici.dici SET prix_m2 = ? WHERE code_ville = ?";
+
+		try (Connection conn = getConnection();
+			 PreparedStatement stmt = conn.prepareStatement(query)) {
+
+			stmt.setFloat(1, prix_m2);
+			stmt.setInt(2, codeInsee);
+
+			stmt.executeUpdate();
+
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {

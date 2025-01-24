@@ -1,4 +1,4 @@
-package dici.script;
+package dici.models.api;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +9,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
-import java.io.InputStream;
 
 public class DataDemographyToDatabase {
 
@@ -56,16 +55,17 @@ public class DataDemographyToDatabase {
 
 
 					String codeVille = String.format ( "%05d", Integer.parseInt ( data[codeVilleIndex] ) );
-					String nomVille = APIToolbox.getCityName(data[codeVilleIndex]);
-					System.out.println("Processing city: " + nomVille + " (Code: " + codeVille + ")");
-					float prixM2 = APIToolbox.getPriceM2(data[codeVilleIndex]);
+					String nomVille = APITools.getCityName(data[codeVilleIndex]);
+					// System.out.println("Processing city: " + nomVille + " (Code: " + codeVille + ")");
+					// float prixM2 = APIToolbox.getPriceM2(data[codeVilleIndex]);
+					float prixM2 = 0;
 					int age = calculateAge(data, headers);
 					int niveauDiplome = calculateNiveauDiplome(data, headers);
 					int densitePop = calculateDensitePop(data, headers);
 					int popActive = calculatePopActive(data, headers);
 					int tauxChomage = calculateTauxChomage(data, headers);
 
-					if ( prixM2 == 0 || nomVille == null )
+					if ( nomVille == null )
 						continue;
 
 					preparedStatement.setInt(1, Integer.parseInt(codeVille));

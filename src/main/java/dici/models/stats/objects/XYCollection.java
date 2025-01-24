@@ -1,4 +1,4 @@
-package dici.stats.objects;
+package dici.models.stats.objects;
 
 public class XYCollection {
 	private ValuesCollection valuesX;

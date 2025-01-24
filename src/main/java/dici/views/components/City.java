@@ -1,6 +1,8 @@
-package dici.classes;
+package dici.views.components;
 
 import javafx.scene.control.Button;
+
+//TODO: voir pour mettre en class interne
 
 public class City
 {
@@ -14,7 +16,6 @@ public class City
 		this.deleteBtn.getStyleClass().add("delete-button");
 	}
 	
-
     public String getNameCity () { return nameCity;  }
     public Button getDeleteBtn() { return deleteBtn; }
 }

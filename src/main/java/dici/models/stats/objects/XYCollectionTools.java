@@ -1,4 +1,4 @@
-package dici.stats.objects;
+package dici.models.stats.objects;
 
 public class XYCollectionTools {
 	public static XYCollection getXYCollection( double[][] data, String[] colNames ){

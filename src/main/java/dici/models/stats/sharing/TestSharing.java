@@ -1,4 +1,4 @@
-package dici.stats.sharing;
+package dici.models.stats.sharing;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -6,12 +6,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import dici.models.stats.TestDatasets;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import dici.stats.TestDatasets;
 
 public class TestSharing {
 
